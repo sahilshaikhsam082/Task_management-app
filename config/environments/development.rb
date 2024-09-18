@@ -16,6 +16,9 @@ Rails.application.configure do
 
   # Enable server timing
   config.server_timing = true
+   
+  #temporarily disabled 
+  config.action_controller.default_protect_from_forgery = false 
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
