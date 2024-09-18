@@ -4,9 +4,10 @@ class ApplicationController < ActionController::Base
 
   def authenticate_request
     header = request.headers['Authorization']
+    render json: {error: "token not available"} if header.nil?
     header = header.split(' ').last if header
     decoded = decode(header)
-    @current_user = User.find(decoded[:user_id]) if decoded
+    @current_user = User.find(decoded[:user_id]) if decoded 
   rescue ActiveRecord::RecordNotFound, JWT::DecodeError
     render json: { error: 'Unauthorized' }, status: :unauthorized
   end
