@@ -75,3 +75,13 @@ group :test do
   gem "selenium-webdriver"
 
 end
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'factory_bot_rails' # For creating test data
+  gem 'faker' # Optional, for generating fake data
+end
+
+group :test do
+  gem 'database_cleaner-active_record' # To clean the database between test runs
+  gem 'shoulda-matchers' # For easy model and controller validation tests
+end
